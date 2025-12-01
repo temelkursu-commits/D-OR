@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dior Makyaj Wiki</title>
+  <style>
+    body { margin:0; padding:0; background:#f5f0e8; font-family: Arial, sans-serif; overflow-x:hidden; }
+
+    .glitter{ position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; overflow:hidden; z-index:5; }
+    .glitter span{ position:absolute; width:6px; height:6px; background:rgba(255,255,255,0.9); opacity:0.7; border-radius:50%; animation:fall linear infinite; }
+    @keyframes fall {0%{transform:translateY(-10vh);}100%{transform:translateY(110vh);} }
+
+    .header{ text-align:center; padding:20px 0; }
+    .header img{ height:80px; }
+
+    .container{ display:flex; justify-content:center; gap:30px; flex-wrap:wrap; padding:40px 20px; }
+
+    .product{ width:200px; height:200px; border:4px solid #3b6fff; border-radius:14px; overflow:hidden; cursor:pointer; transition:0.3s; background:white; }
+    .product:hover{ transform:scale(1.05); }
+    .product img{ width:100%; height:100%; object-fit:cover; }
+
+    .popup-bg{ position:fixed; top:0; left:0; width:100%; height:100%; backdrop-filter:blur(6px); background:rgba(0,0,0,0.45); display:none; justify-content:center; align-items:center; z-index:20; }
+
+    .popup{ width:80%; max-width:900px; background:white; padding:28px; border-radius:18px; position:relative; display:flex; gap:20px; }
+    .popup img{ width:220px; height:220px; object-fit:cover; border-radius:12px; }
+
+    .close-btn{ position:absolute; top:12px; right:18px; font-size:32px; cursor:pointer; }
+
+    .popup-text{ white-space:pre-line; font-size:16px; line-height:1.5; }
+
+    @media(max-width:760px){ .popup{ flex-direction:column; align-items:center; } .popup img{ width:160px; height:160px; } }
+  </style>
+</head>
+<body>
+
+<div class="glitter" id="glitter"></div>
+
+<div class="header">
+  <img src="dior.png" alt="Dior Logo" />
+</div>
+
+<div class="container">
+  <div class="product" onclick="openPopup(1)"><img src="1.jpg" /></div>
+  <div class="product" onclick="openPopup(2)"><img src="2.jpg" /></div>
+  <div class="product" onclick="openPopup(3)"><img src="3.jpg" /></div>
+  <div class="product" onclick="openPopup(4)"><img src="4.jpg" /></div>
+  <div class="product" onclick="openPopup(5)"><img src="5.jpg" /></div>
+</div>
+
+<div class="popup-bg" id="popup-bg">
+  <div class="popup">
+    <span class="close-btn" onclick="closePopup()">×</span>
+    <img id="popup-img" />
+    <div class="popup-text" id="popup-text"></div>
+  </div>
+</div>
+
+<!-- PRODUCT TEXT YOU WILL EDIT -->
+<div id="product-data" style="display:none;">
+
+  <div id="p1">Dior Forever Glow Highlighter-dərini işıqlandırmaq, təbii parıltı vermək və makyajı tamamlayan bir highlighter məhsuludur. Məhsulun əsas məqsədi: makyajdan sonra yanaq, qaş üstü, burnun ortası kimi “highlight” verilməsi lazım olan yerləri vurğulamaq. Dior highlighter’ı adətən çox incə, təbii parıltı verən toz və bəzən maye / krem formatda olur-bu da dəridə təbii, “glowy” (işıqlı) görünüş yaradır. “Glow” effekti sayəsində dəridə sanki təbii işıq vurulmuş kimi təbii və zərif parıltı alınır-gündəlik makyaj üçün olduğu kimi, gecə makyajı üçün də uygundur. Highlighter-dan istifadə edərkən-yanaq sümüyünün üstü, qaş altı, burun ucu, dodaq üstü kimi yerlərə az miqdarda tətbiq etmək adətən daha gözəl və təbii görünüş verir.</div>
+  <div id="p2">Dior tuşu-göz makiyajının ən vacib elementlərindən biridir. Bu tuş kirpiklərə hacim və təbii uzunluq verir, onları qara və ifadəli edir.Formulası təxminən 90 % təbii tərkibli maddələrdən ibarətdir və çiçək ekstaktı ilə zənginləşdirilmişdir.XXL fırça sayəsində kirpiklər kökündən ucuna qədər tək-tək örtülür, beləliklə həm həcim, həm də ayıq və parlaq görünüş əldə edilir.Tuş suya davamlı versiyada da olur, buna görə gün boyu qalır, axmır və yayılmır — gündəlik istifadə üçün rahatdır.Nəticədə göz makiyajı daha dramatik və diqqətçəkən görünür-kirpiklər uzun, qalın, qıvrılmış və gözə çarpan olur.</div>
+  <div id="p3">Dior Stick Tonal-yüngül teksturalı, yüksək örtücülük təmin edən və təbii bitiş verən krem tonal məhsuldur. Asan sürtülən formulu sayəsində dəridə rahat yayılır və qat-qat artırıla bilən effekt yaradır. Mat, lakin canlı görünüş saxlayaraq gün boyu qalıcıdır. Portativ stick forması ilə istənilən vaxt makiyaj yeniləməyə imkan verir və həm bütün üz üçün, həm də lokal korreksiya üçün istifadə oluna bilər.</div>
+  <div id="p4">Dior Bronze-dərinizə günəşdən öpülmüş təbii bir bronz effekt verən, yüngül teksturalı və asan yayılan bronzer məhsuludur. Dərinin tonunu istiləndirərək sağlam parlaqlıq yaradır və həm üz, həm də bədən üçün istifadə oluna bilər. Qat-qat artırıla bilən formulu sayəsində həm yumşaq təbii effekt, həm də daha dərin bronz görünüş əldə etməyə imkan verir. Gün boyu qalıcıdır və makiyaja isti, harmonik bitiş əlavə edir.</div>
+  <div id="p5">Dior enlik-yanaqlara təbii və canlı rəng effekti verən, ipək kimi yumşaq teksturaya sahib bir məhsuldur. Asan yayılan formulu sayəsində dərinin tonuna uyğun şəkildə qarışaraq təbii bir təravət yaradır. Qalıcı piqmentləri gün boyu solmadan qalır və makiyaja daha sağlam, parlaq bir görünüş əlavə edir. Həm gündəlik istifadə, həm də daha güclü makiyaj üçün uyğundur.</div>
+
+</div>
+
+<script>
+  function openPopup(id){
+    document.getElementById('popup-bg').style.display='flex';
+    document.getElementById('popup-img').src = id + '.jpg';
+    document.getElementById('popup-text').innerText = document.getElementById('p'+id).innerText;
+    document.body.style.overflow='hidden';
+  }
+  function closePopup(){
+    document.getElementById('popup-bg').style.display='none';
+    document.body.style.overflow='';
+  }
+
+  const glitter=document.getElementById('glitter');
+  for(let i=0;i<80;i++){ let s=document.createElement('span'); s.style.left=Math.random()*100+'vw'; s.style.animationDuration=2+Math.random()*4+'s'; glitter.appendChild(s); }
+</script>
+
+</body>
+</html>
